@@ -26,28 +26,28 @@
 
 /* Variables */
 
-var baseAPI = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api';
-var usersAPI = baseAPI + "/users/";
-var streamsAPI = baseAPI + "/streams/";
-var channelsAPI = baseAPI + "/channels/";
+let baseAPI = 'https://cors-anywhere.herokuapp.com/https://wind-bow.gomix.me/twitch-api';
+let usersAPI = baseAPI + "/users/";
+let streamsAPI = baseAPI + "/streams/";
+let channelsAPI = baseAPI + "/channels/";
 
-var users = [
+let users = [
   "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck",
   "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"
 ];
 
-var usersAll = [];
-var usersFound = [];
-var usersNotFound = [];
-var usersStreaming = [];
-var usersNotStreaming = [];
-var usersOnline = [];
-var usersOffline = [];
+let usersAll = [];
+let usersFound = [];
+let usersNotFound = [];
+let usersStreaming = [];
+let usersNotStreaming = [];
+let usersOnline = [];
+let usersOffline = [];
 
-var strLogo = '';
-var strGame = '';
-var strStatus = '';
-var strHTML = '';
+let strLogo = '';
+let strGame = '';
+let strStatus = '';
+let strHTML = '';
 
 /* Functions */
 
@@ -58,36 +58,24 @@ function getUsers() {
 	getOfflineStreamerInfo();
 }
 
-async function ajaxCall(strAPI) {
-	let ajaxData;
-	
-	try {
-		ajaxData = await $.ajax({
-			url: strAPI
-		});
-		
-		return ajaxData;
-	} catch (e) {
-		console.error(e);
-	}
-}
-
 function checkUsers() {
 	// - Check each username in users[] if it exists or not in Twitch.tv via usersAPI
 	// - If username exists, push to usersFound[]
 	// - If username does not exist, push to usersNotFound[]
 	
-	usersFound = [];
-	usersNotFound = [];
-	
-	let checkedUser;
-	
-	user.forEach(function(user) {
-		checkedUser = await ajaxCall(usersAPI + user);
-		
-		console.log(checkedUser);
+	// usersFound = [];
+	// usersNotFound = [];
+
+	users.forEach(async user => {
+		let response = await fetch(usersAPI + user);
+
+		if (response.ok) {
+			usersFound.push(user);
+		} else {
+			usersNotFound.push(user);
+		}
 	});
-	
+
 	/* WORKING BUT VERY SLOW
 	for (var counter = 0; counter < users.length; counter++) {
 		$.ajax({
@@ -114,10 +102,10 @@ function checkStreamers() {
 	// - If username is streaming, push to usersStreaming[]
 	// - If username is not streaming, push to usersNotStreaming[]
 	
-	usersStreaming = [];
-	usersNotStreaming = [];
-	
-	/* WORKING BUT VERY SLOW
+	// usersStreaming = [];
+	// usersNotStreaming = [];
+
+	// WORKING BUT VERY SLOW
 	for (var counter = 0; counter < usersFound.length; counter++) {
 		$.ajax({
 			url: streamsAPI + usersFound[counter],
@@ -136,16 +124,15 @@ function checkStreamers() {
 			}
 		});
 	}
-	*/
 }
 
 function getOnlineStreamerInfo() {
 	// - For each username in usersStreaming[], get its logo, game, status via streamsAPI
 	//   then push to usersOnline[] and usersAll[]
 	
-	usersOnline = [];
+	// usersOnline = [];
 	
-	/* WORKING BUT VERY SLOW
+	// WORKING BUT VERY SLOW
 	for (var counter = 0; counter < usersStreaming.length; counter++) {
 		$.ajax({
 			url: streamsAPI + usersStreaming[counter],
@@ -160,16 +147,15 @@ function getOnlineStreamerInfo() {
 			}
 		});
 	}
-	*/
 }
 
 function getOfflineStreamerInfo() {
 	// - For each username in usersNotStreaming[], get its logo, game via channelsAPI and
 	//   set the status to 'Offline' then push to usersOffline[] and usersAll[]
 	
-	usersOffline = [];
+	// usersOffline = [];
 	
-	/* WORKING BUT VERY SLOW
+	// WORKING BUT VERY SLOW
 	for (var counter = 0; counter < usersNotStreaming.length; counter++) {
 		$.ajax({
 			url: channelsAPI + usersNotStreaming[counter],
@@ -184,7 +170,6 @@ function getOfflineStreamerInfo() {
 			}
 		});
 	}
-	*/
 }
 
 function displayList(arr) {
