@@ -27,10 +27,6 @@ const STREAMS_API = BASE_API + "/streams/";
 const CHANNELS_API = BASE_API + "/channels/";
 
 let usersAll = [], 
-	usersFound = [], 
-	usersNotFound = [], 
-	usersStreaming = [],
-	usersNotStreaming = [], 
 	usersOnline = [], 
 	usersOffline = [], 
 	strLogo = '', 
@@ -41,7 +37,7 @@ let usersAll = [],
 
 async function getTwitchUsers(strUser) {
 	let streamInfo = await fetch(STREAMS_API + strUser);
-	
+
 	if (streamInfo.ok && streamInfo.status === 200) {
 		let streamData = await streamInfo.json();
 	

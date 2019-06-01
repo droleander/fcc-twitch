@@ -12,43 +12,13 @@ body {
 	background: linear-gradient(to bottom, #f4edff, #4500ff) fixed;
 	display: flex;
 	flex-direction: column;
+	text-align: center;
 }
-
 
 /* -- header -- */
 header {
 	margin: 1rem auto;
-}
-
-/* -- section -- */
-section {
-	flex: 1 0 auto;
-}
-
-/* -- footer -- */
-footer {
-	flex-shrink: 0;
-}
-
-footer p {
-	text-align: center;
-}
-
-
-/*
-
-.container {
-	max-width: 900px;
-	min-width: 300px;
-}
-
-header {
-	margin: 20px auto;
-	text-align: center;
-}
-
-header h1 {
-	margin: auto;
+	text-transform: uppercase;
 }
 
 .btn {
@@ -56,7 +26,7 @@ header h1 {
 }
 
 #bttnAll {
-	background: -webkit-linear-gradient(#a5ffa5, #ffce61);
+	background: linear-gradient(#a5ffa5, #ffce61);
 }
 
 .user-online,
@@ -69,31 +39,33 @@ header h1 {
 	background-color: #ffce61;
 }
 
+/* -- section -- */
+section {
+	flex: 1 0 auto;
+}
+
 .content {
-	margin: 0 auto 10px auto;
-	padding: 10px 0;
+	margin: 1rem auto;
+	text-align: left;
+	padding: 1rem;
 }
 
 .content img {
-	border-radius: 10px;
-	height: 50px;
-	margin: 0 10px;
+	border-radius: 5px;
+	height: 5rem;
+	margin-right: 1rem;
 }
 
 .content p {
-	margin: 0 10px;
+	margin: auto;
 }
 
+/* -- footer -- */
 footer {
-	margin: 10px auto 20px auto;
+	flex-shrink: 0;
+	margin: 1rem auto;
 }
 
 footer p {
-	text-align: center;
-	margin: 0;
+	margin: auto;
 }
-
-footer a {
-	color: #000;
-}
-*/
