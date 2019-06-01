@@ -9,29 +9,28 @@ body {
 }
 
 body {
-	background: -webkit-linear-gradient(top, #f4edff, #4500ff) fixed;
+	background: linear-gradient(to bottom, #f4edff, #4500ff) fixed;
 	display: flex;
 	flex-direction: column;
 }
 
 
-//-- header --//
+/* -- header -- */
 header {
 	margin: 1rem auto;
 }
 
-//-- section --//
+/* -- section -- */
 section {
 	flex: 1 0 auto;
 }
 
-//-- footer --//
+/* -- footer -- */
 footer {
 	flex-shrink: 0;
 }
 
 footer p {
-	margin: auto;
 	text-align: center;
 }
 
