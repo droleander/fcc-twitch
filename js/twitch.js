@@ -32,6 +32,8 @@ async function getTwitchUsers(strUser) {
 			usersOffline.push([strLogo, strUser, strGame, strStatus]);
 		}
 		usersAll.push([strLogo, strUser, strGame, strStatus]);
+	} else {
+		throw new Error(`${strUser} (HTTP ${streamInfo.status} ${streamInfo.statusText}) has occurred.`);
 	}
 }
 
