@@ -64,26 +64,26 @@ async function getTwitchUsers(strUser) {
 
 function displayList(arr) {
 	$(".section-content").empty();
-	for (var counter = 0; counter < arr.length; counter++) {
-		if (arr[counter][3] != "offline") {
+	arr.forEach(arrProp => {
+		if (arrProp[3] != "offline") {
 			strHTML = `<div class="row content user-online">`;
 		} else {
-			strHTML = `<div class="row content user-${arr[counter][3]}">`;
+			strHTML = `<div class="row content user-${arrProp[3]}">`;
 		}
 		strHTML += `<div class="col-xs-2">
-			<img src="${arr[counter][0]}" alt="logo">
+			<img src="${arrProp[0]}" alt="logo">
 			</div>
 			<div class="col-xs-10 content-detail">
-			<p><a href="https://www.twitch.tv/${arr[counter][1]}" target="_blank">${arr[counter][1]}</a></p>`;
-		if (arr[counter][3] != "offline") {
-			strHTML += `<p>${arr[counter][2]}</p>`; // game  
+			<p><a href="https://www.twitch.tv/${arrProp[1]}" target="_blank">${arrProp[1]}</a></p>`;
+		if (arrProp[3] != "offline") {
+			strHTML += `<p>${arrProp[2]}</p>`; // game  
 		}
-		strHTML += `<p>${arr[counter][3]}</p>
+		strHTML += `<p>${arrProp[3]}</p>
 			</div>
 			</div>`;
 
-		$(".section-content").append(strHTML);
-	}
+		$(".section-content").append(strHTML);		
+	});
 }
 
 $(document).ready(function () {
